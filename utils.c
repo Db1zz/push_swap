@@ -6,15 +6,12 @@
 /*   By: gonische <gonische@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 18:00:04 by gonische          #+#    #+#             */
-/*   Updated: 2024/08/01 20:59:33 by gonische         ###   ########.fr       */
+/*   Updated: 2024/08/02 18:40:38 by gonische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-	TEST THIS CODE PLEASE
-*/
 t_node	*alloc_node(t_node *next, t_node *last, int data)
 {
 	t_node	*result;
@@ -27,9 +24,6 @@ t_node	*alloc_node(t_node *next, t_node *last, int data)
 	return (result);
 }
 
-/*
-	TEST THIS CODE PLEASE
-*/
 void	swap_node(t_node **a, t_node **b)
 {
 	t_node	*temp;

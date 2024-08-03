@@ -14,7 +14,6 @@ TEST_CFLAGS = -Wall -Wextra -fsanitize=address
 TEST_SRCS = $(filter-out push_swap.c, $(wildcard *.c)) $(wildcard ./tests/*.c)
 TEST_OBJS = $(TEST_SRCS:.c=.o)
 
-
 all: $(PRINTF) $(NAME)
 
 $(PRINTF):

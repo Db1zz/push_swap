@@ -6,32 +6,32 @@
 /*   By: gonische <gonische@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 17:38:53 by gonische          #+#    #+#             */
-/*   Updated: 2024/08/01 20:59:36 by gonische         ###   ########.fr       */
+/*   Updated: 2024/08/03 09:20:57 by gonische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-	TEST THIS CODE PLEASE
-*/
-void	push_stack(t_node **stack_a, t_node **stack_b)
+void	push_stack(t_node **push_from, t_node **push_to)
 {
 	t_node	*temp;
 
-	if (!(*stack_a))
+	if (!(*push_from))
 		return ;
-	temp = (*stack_a)->next;
-	if (*stack_b)
-	{
-		(*stack_a)->next = *stack_b;
-		(*stack_b)->last = (*stack_a);
-		*stack_b = *stack_a;
+	if (*push_to != NULL)
+	{		
+		(*push_to)->last = *push_from;
+		temp = (*push_from)->next;
+		(*push_from)->next = *push_to;
+		*push_to = *push_from;
+		*push_from = temp;
+		if (*push_from)
+			(*push_from)->last = NULL;
 	}
 	else
 	{
-		*stack_b = *stack_a;
-		(*stack_a)->next = NULL;
+		*push_to = *push_from;
+		*push_from = (*push_from)->next;
+		(*push_to)->next = NULL;
 	}
-	*stack_a = temp;
 }
