@@ -6,7 +6,7 @@
 /*   By: gonische <gonische@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 11:42:03 by gonische          #+#    #+#             */
-/*   Updated: 2024/08/30 15:10:27 by gonische         ###   ########.fr       */
+/*   Updated: 2024/08/31 04:29:52 by gonische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,12 @@ t_stack	*init_stack(char **argv)
 	t_stack	*result;
 	int		**num_set;
 
+	num_set = parse_nums(argv);
+	if (num_set == NULL)
+		return (NULL);
 	result = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	if (!result)
 		return (NULL);
-	num_set = parse_nums(argv);
 	result->stack_a = alloc_list((const int **)num_set);
 	if (!result->stack_a)
 	{
@@ -67,6 +69,7 @@ t_stack	*init_stack(char **argv)
 		free(result);
 		return (NULL);
 	}
+	free_int_2d_matrix(num_set);
 	result->stack_b = NULL;
 	return (result);
 }
@@ -78,7 +81,7 @@ void	free_stack(t_stack **stack)
 		free_list((*stack)->stack_a);
 		free_list((*stack)->stack_b);
 		free(*stack);
-		(*stack) = NULL;
+		*stack = NULL;
 	}
 }
 

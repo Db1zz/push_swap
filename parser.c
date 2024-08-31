@@ -6,7 +6,7 @@
 /*   By: gonische <gonische@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 14:14:22 by gonische          #+#    #+#             */
-/*   Updated: 2024/08/31 02:24:22 by gonische         ###   ########.fr       */
+/*   Updated: 2024/08/31 04:53:40 by gonische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static size_t	count_and_validate_args(char **argv)
 			num = ft_atoi_int64(nums);
 			if (!is_substring_numeric(nums) || num > INT_MAX || num < INT_MIN)
 			{
-				ft_printf("Error");
+				ft_printf("Error\n");
 				return (0);
 			}
 			nums = get_next_num(nums);
@@ -64,30 +64,49 @@ static size_t	count_and_validate_args(char **argv)
 	return (result);
 }
 
+static int	*find_duplicated_num(int **nums, int *num)
+{
+	int	i;
+
+	if (!nums || !num)
+		return (NULL);
+	i = 0;
+	while (nums[i] != NULL)
+	{
+		if (*nums[i] == *num && nums[i] != num)
+		{
+			ft_printf("Error\n");
+			return (nums[i]);
+		}
+		i++;
+	}
+	return (NULL);
+}
+
 int	**parse_nums(char **argv)
 {
 	int		**result;
 	char	*nums;
 	size_t	result_size;
-	int		i;
 	int		j;
 
-	i = 0;
 	j = 0;
 	result_size = count_and_validate_args(argv);
 	if (result_size == 0)
 		return (NULL);
-	result = ft_calloc(result_size + 1, sizeof(char *));
-	while (argv[i])
+	result = ft_calloc((result_size + 1), sizeof(int *));
+	while (*argv)
 	{
-		nums = argv[i++];
+		nums = *argv;
 		while (*nums)
 		{
 			result[j] = ft_calloc(1, sizeof(int));
 			*result[j] = ft_atoi(nums);
+			if (find_duplicated_num(result, result[j++]) != NULL)
+				return (free_int_2d_matrix(result), NULL);
 			nums = get_next_num(nums);
-			j++;
 		}
+		argv++;
 	}
 	return (result);
 }

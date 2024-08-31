@@ -1,7 +1,7 @@
 # Project settings
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address -g
 SRCS =	chunk.c			\
 		list.c			\
 		main.c			\

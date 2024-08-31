@@ -6,7 +6,7 @@
 /*   By: gonische <gonische@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 17:43:55 by gonische          #+#    #+#             */
-/*   Updated: 2024/08/31 02:31:41 by gonische         ###   ########.fr       */
+/*   Updated: 2024/08/31 03:45:12 by gonische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <limits.h>
+# include <bits/stdint-intn.h> 
 # include "./libft/libft.h"
 
 /*
