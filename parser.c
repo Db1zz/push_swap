@@ -6,7 +6,7 @@
 /*   By: gonische <gonische@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 14:14:22 by gonische          #+#    #+#             */
-/*   Updated: 2024/08/31 04:53:40 by gonische         ###   ########.fr       */
+/*   Updated: 2024/08/31 14:23:11 by gonische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static bool	is_substring_numeric(char *nums)
 {
 	const char	delimeter = ' ';
 
+	if (nums && *nums == '0' && nums + 1 && ft_isdigit(*(nums + 1)))
+		return (false);
 	while (*nums && *nums != delimeter)
 	{
 		if (!(!*nums || ft_isdigit(*nums) || *nums == '-' || *nums == '+'))

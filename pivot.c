@@ -6,7 +6,7 @@
 /*   By: gonische <gonische@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 19:02:34 by gonische          #+#    #+#             */
-/*   Updated: 2024/08/26 14:38:18 by gonische         ###   ########.fr       */
+/*   Updated: 2024/08/31 14:25:07 by gonische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ t_pivot	*get_pivot(t_node *stack_start, size_t size)
 	{
 		curr = get_node_at_index(stack_start, i);
 		result = analyze_pivot(stack_start, size, curr);
-		if (choose_this_pivot(result, size))
+		if (!choose_this_pivot(result, size))
+			free(result);
+		else
 			break ;
 		i++;
 	}
